@@ -23,5 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
     coutner.append(pageNumberElement);
   }
 
-  console.log(pagesCount);
+  // Set title
+  const title = document.querySelector("header div");
+  const titleElement = document.createElement("span");
+  titleElement.innerText = document.title;
+  title.append(titleElement);
+
+
+  // Set time
+  const times = document.querySelectorAll("footer time");
+  times.forEach((time) => {
+    time.innerText = new Date().toLocaleDateString();
+  })
 });
