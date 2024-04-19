@@ -1,0 +1,129 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 21cm;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header img {
+  height: 0.75cm;
+}
+
+h1 {
+  margin: 0;
+}
+
+header > div, main > div, footer > div {
+  padding: 0 1cm;
+}
+
+header {
+  height: 2.5cm;
+}
+
+header > div {
+  padding-top: 1cm;
+}
+
+footer {
+  height: 2.5cm;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+footer > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 2.5cm;
+  align-items: center;
+}
+
+footer > div .column:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+
+footer > div .column:nth-child(3) {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen {
+  html {
+    background-color: #EEE;
+  }
+
+  body {
+    background-color: #FFF;
+    margin: 1cm auto;
+    border: 1px solid #CCC;
+    box-shadow: 0 0 10px #CCC;
+  }
+
+  #counter {
+    display: none;
+  }
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  #counter {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+
+  #counter > div {
+    height: calc(100% - 1cm);
+    padding-top: 1cm;
+    break-inside: auto;
+  }
+
+  body {
+    min-height: 100%;
+    display: table;
+    /* Hack to always show colors and background colors */
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  header, footer {
+     break-inside: avoid;
+  }
+
+  header {
+    /* Hack to repeat header element on every packe */
+    display: table-header-group;
+  }
+
+  header::after {
+    position: fixed;
+  }
+
+  main {
+    display: table-row-group;
+    min-height: 100%;
+  }
+
+  footer {
+    /* Hack to repeat footer element on every packe */
+    display: table-footer-group;
+  }
+
+  footer > div {
+    position: fixed;
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
